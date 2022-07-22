@@ -31,7 +31,7 @@ class ManifestScriptWebpackPlugin {
           'ManifestScriptWebpackPlugin',
           (data, cb) => {
             /** 添加manifest文件到body */
-            data.assets.js.push(`${options.filename}.js`)
+            data.assets.js.unshift(`${options.filename}.js`)
 
             cb(null, data)
           }
