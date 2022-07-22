@@ -40,7 +40,7 @@ class ManifestScriptWebpackPlugin {
     )
     compiler.hooks.afterEmit.tapAsync(
       'ManifestScriptWebpackPlugin',
-      (compilation) => {
+      (compilation, callback) => {
         const formatCode = (code, parser = 'typescript') => {
           return format(code, {
             parser
@@ -51,6 +51,7 @@ class ManifestScriptWebpackPlugin {
         )}`
         const code = options.format ? formatCode(manifest) : manifest
         writeFile(`${output}\\${options.filename}.js`, code, 'utf-8')
+        callback()
       }
     )
   }
