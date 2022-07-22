@@ -43,7 +43,8 @@ class ManifestScriptWebpackPlugin {
       (compilation, callback) => {
         const formatCode = (code, parser = 'typescript') => {
           return format(code, {
-            parser
+            parser,
+            singleQuote: true
           })
         }
         const manifest = `window.${options.filename} = ${JSON.stringify(
